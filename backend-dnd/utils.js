@@ -107,7 +107,6 @@ const extractOptionsFromAIResponse = (response) => {
       options.push([line]);
     }
   }
-  options.push(["custom answer"]);
   return options;
 };
 

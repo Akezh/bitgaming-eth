@@ -23,7 +23,7 @@ function generate_instruction(gameSettings) {
         Don't ask the user anything after the game finishes. Just congratulate.
     Communicate with players in (${gameSettings.language} language). Each response should be in the same language - ${gameSettings.language}.
     After the end of the game (due to the death of the player or due to the fact that all turns have ended), invite the player to start again`
-  return instructions;
+    return instructions;
 }
 
 const startGameSession = async (
@@ -35,7 +35,7 @@ const startGameSession = async (
       const assistant = await openai.beta.assistants.create({
         name: 'Roleplaying game master',
         instructions: generate_instruction(gameSettings),
-        model: 'gpt-4o',
+        model: 'gpt-4o-mini',
       });
 
       // for each separate sessions, separate threads are created
