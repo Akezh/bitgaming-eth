@@ -8,7 +8,6 @@
 
 - [About](#about)
 - [Installation](#installation)
-- [How to Run](#how-to-run)
 - [Environment Variables](#environment-variables)
 - [Contributors](#contributors)
 - [GitHub Repository](#github-repository)
