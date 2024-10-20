@@ -33,6 +33,7 @@ Web app where you can enjoy **AI-powered Dungeons & Dragons**, earn **blockchain
 3️⃣ **Walrus**
 
 - Scripts for **managing and uploading images** securely on **blockchain storage** using Walrus.
+- Powers the gallery page and serves NFT images.
 
 4️⃣ **Hardhat**
 
