@@ -64,6 +64,8 @@ placeholder for intro
    yarn start
    ```
 
+   This will run the back end locally to manage DnD game sessions.
+
 
 3. **Set up environment variables**:
    Copy the provided `env.example` file to `.env`:
@@ -73,6 +75,16 @@ placeholder for intro
 
 4. **Configure the `.env` file** 
     create .env file with open API key, you can check env.example
+
+## Contributors
+YongyuLiu03 - GitHub Profile
+Akezh - Akezhan Rakishev (GitHub Profile)
+haileyism - GitHub Profile
+
+## GIthub Repository
+
+Find the source code and contribute to the project here:
+https://github.com/Akezh/bitgaming-eth
 
 
  
