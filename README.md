@@ -1,11 +1,12 @@
+# 🎮 Bitgaming
 
-# Bitgame-ETH
-
-Bitgame-ETH is a blockchain-powered gaming platform combining play-to-earn mechanics, NFTs, and an AI-driven Dungeons & Dragons (DnD) game. Using Dynamic and Flow networks, it ensures smooth asset transfers and smart contract interactions. Players earn NFTs and tokens by completing quests and battles, which can be used in-game or traded. The AI-powered DnD game offers immersive storytelling with real-time decision-making, delivering a next-gen gaming experience.
+**Play-To-Earn gaming platform & NFT marketplace**
 
 ---
 
-## Table of Contents
+## 📑 Table of Contents
+
+- [About](#about)
 - [Installation](#installation)
 - [How to Run](#how-to-run)
 - [Environment Variables](#environment-variables)
@@ -14,78 +15,111 @@ Bitgame-ETH is a blockchain-powered gaming platform combining play-to-earn mecha
 
 ---
 
-## Installation
+## 📖 About
 
-1. **Clone the repository**:
-   ```bash
-   git clone https://github.com/Akezh/bitgaming-eth
+1️⃣ **Frontend**
 
+Web app where you can enjoy **AI-powered Dungeons & Dragons**, earn **blockchain currency**, and **claim NFTs**
 
-2. **Install dependencies - Front End**:
-   You can use either `npm` or `yarn` to install the project’s dependencies.
+- **Features**:
+  - Lightning-fast sign-ins with Dynamic auth
+  - Play **AI-powered Dungeons & Dragons** with dynamic storylines and images
+  - Earn in-game **blockchain currency (BIT)** and unlock **NFT collectibles**.
+- **Core Technologies**: TypeScript, React, wagmi, ethers, Dynamic.xyz, Walrus, Morph Holesky Testnet,
 
-   With npm:
-   ```bash
-   npm install
-   ```
-     ```bash
-   npm start
-   ```
+- .
 
-   Or with yarn:
-   ```bash
-   yarn install
-   ```
-     ```bash
-   yarn start
-   ```
-   **Install dependencies - Back End**:
+2️⃣ **Backend-DnD**
 
-   You can use either `npm` or `yarn` to install the project’s dependencies.
+- This backend service powers **Dungeons & Dragons** gameplay by interacting with **OpenAI's GPT LLM (4.0)** to provide immersive storytelling and dynamic player interactions.
 
-    ```bash
-   cd /backend-dnd
-   ```
+3️⃣ **Walrus**
 
-   With npm:
+- Scripts for **managing and uploading images** securely on **blockchain storage** using Walrus.
 
-   ```bash
-   npm install
-   ```
-   ```bash
-   npm start
-   ```
+4️⃣ **Hardhat**
 
-   Or with yarn:
-   ```bash
-   yarn install
-   ```
-   ```bash
-   yarn start
-   ```
+- Blockchain development toolkit used to **deploy and manage smart contracts** within the platform.
 
-   This will run the back end locally to manage DnD game sessions.
+---
 
+## ⚙️ Installation
 
-3. **Set up environment variables**:
-   Copy the provided `env.example` file to `.env`:
-   ```bash
-   cp env.example .env
-   ```
+### 1. Clone the Repository
 
-4. **Configure the `.env` file** 
-    create .env file with open API key, you can check env.example
+```bash
+git clone https://github.com/Akezh/bitgaming-eth
+cd bitgaming-eth
+```
 
-## Contributors
-YongyuLiu03 - GitHub Profile
-Akezh - Akezhan Rakishev (GitHub Profile)
-haileyism - GitHub Profile
+---
 
-## GIthub Repository
+### 2. Frontend Setup
 
-Find the source code and contribute to the project here:
-https://github.com/Akezh/bitgaming-eth
+#### Step 1: Set Up Environment Variables
 
+Copy the provided `.env.example` file to `.env`. Make sure to create an account at [Dynamic](https://app.dynamic.xyz/) for your **VITE_DYNAMIC_ENV_ID**:
 
- 
-  
+```bash
+cp .env.example .env
+```
+
+#### Step 2: Install Dependencies & Launch
+
+You can use **npm** or **yarn** (Node 20 preferred, Node 18+ supported):
+
+```bash
+npm install
+npm run dev
+```
+
+---
+
+### 3. Backend Setup
+
+#### Step 1: Set Up Environment Variables
+
+Copy the `.env.example` file to `.env` and set your **OPEN_AI_API_KEY** by creating a developer account on [OpenAI](https://platform.openai.com/):
+
+```bash
+cp .env.example .env
+```
+
+#### Step 2: Install Dependencies & Launch
+
+```bash
+npm install
+npm run dev
+```
+
+- The backend runs an **Express server** designed to manage **D&D campaigns**, powered by OpenAI APIs. It handles **Assistants, Threads, Messages**, and **Runs** to provide smooth game management.
+
+---
+
+## 🌍 Environment Variables
+
+Ensure the following keys are properly configured in the `.env` file:
+
+- **Frontend**:
+
+  - `VITE_DYNAMIC_ENV_ID` → [Dynamic](https://app.dynamic.xyz/) Account
+
+- **Backend**:
+  - `OPEN_AI_API_KEY` → [OpenAI](https://platform.openai.com/) API Key
+
+Refer to the provided **`.env.example`** file for additional details.
+
+---
+
+## 👥 Contributors
+
+- **[YongyuLiu03](https://github.com/YongyuLiu03)** – GitHub Profile
+- **[Akezhan Rakishev](https://github.com/Akezh)** – GitHub Profile
+- **[haileyism](https://github.com/haileyism)** – GitHub Profile
+
+---
+
+## 📂 GitHub Repository
+
+Explore the source code and contribute to the project on **GitHub**:  
+[Bitgaming Repository](https://github.com/Akezh/bitgaming-eth)
