@@ -27,8 +27,6 @@ Web app where you can enjoy **AI-powered Dungeons & Dragons**, earn **blockchain
   - Earn in-game **blockchain currency (BIT)** and unlock **NFT collectibles**.
 - **Core Technologies**: TypeScript, React, wagmi, ethers, Dynamic.xyz, Walrus, Morph Holesky Testnet,
 
-- .
-
 2️⃣ **Backend-DnD**
 
 - This backend service powers **Dungeons & Dragons** gameplay by interacting with **OpenAI's GPT LLM (4.0)** to provide immersive storytelling and dynamic player interactions.
