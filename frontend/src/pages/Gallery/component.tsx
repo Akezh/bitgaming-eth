@@ -7,7 +7,7 @@ const baseAggregatorUrl = "https://aggregator.walrus-testnet.walrus.space";
 
 export const GalleryPage = () => {
   const [galleryImages, setGalleryImages] = useState([]);
-  const server_url = "http://localhost:3000";
+  const server_url = process.env.SERVER_URL || "https://localhost:3000";
 
 
   // Recursive function to extract blob IDs from nested JSON
