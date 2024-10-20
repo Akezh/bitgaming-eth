@@ -4,13 +4,12 @@ import { BITContract, NFTContract } from "config/contracts";
 import { SyncIcon } from "core";
 import { formatEther, parseEther } from "viem";
 import { useAccount, useWriteContract, useReadContract } from "wagmi";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { toast } from "react-toastify";
 
 import { NFTCard, VerticalNavigationTemplate } from "components";
 
 import blod_id_info from "../../assets/info_blob_id.json";
-
 
 const default_avatar =
   "https://pwco.com.sg/wp-content/uploads/2020/05/Generic-Profile-Placeholder-v3.png";
@@ -20,7 +19,6 @@ const SILVER_THRESHOLD = 300;
 const GOLD_THRESHOLD = 500;
 
 const baseAggregatorUrl = "https://aggregator.walrus-testnet.walrus.space";
-
 
 export const MainPage = () => {
   const { address: account } = useAccount();
@@ -37,32 +35,29 @@ export const MainPage = () => {
   } = useWriteContract();
   const { coins, setCoins } = useCoinsContext();
   const [synced, setSynced] = useState(0);
-  const [ownershipCount, setOwnershipCount] = useState<number[]>([]);
-  console.log("🚀 ~ MainPage ~ BrainNFTContractError:", BrainNFTContractError);
 
   const [bronzeNFT, setBronzeNFT] = useState([]);
   const [silverNFT, setSilverNFT] = useState([]);
   const [goldNFT, setGoldNFT] = useState([]);
 
-
-
   useEffect(() => {
     const blobUrl = `${baseAggregatorUrl}/v1/${blod_id_info["blob_id"]}`;
 
     fetch(blobUrl, {
-      method: "GET"
-    }).then((res) => {
+      method: "GET",
+    })
+      .then((res) => {
         res.json().then((data) => {
-          console.log(data)
+          console.log(data);
           setBronzeNFT(data.bronzeNFT);
           setSilverNFT(data.silverNFT);
           setGoldNFT(data.goldNFT);
-        })
-      }
-    ).catch((err) => {
-      console.log(err)
-    })
-  }, [])
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
   const claimCoins = useCallback(async () => {
     writeContractBITToken({
@@ -78,16 +73,22 @@ export const MainPage = () => {
         ...NFTContract,
         functionName: "claimNFT",
         args: [nftIndex],
+        sender: "",
       } as any);
     },
     [writeContractBrainNFT]
   );
 
-  const { data: ownershipData } = useReadContract({
-    ...NFTContract,
-    functionName: "getOwnershipCount",
-    args: [account],
-  } as any);
+  const { data: ownershipData, refetch: refetchOwnershipData } =
+    useReadContract({
+      ...NFTContract,
+      functionName: "getOwnershipCount",
+      args: [account],
+    } as any);
+
+  const ownershipCount = useMemo(() => {
+    return ownershipData?.map((o) => Number(String(o).substring(0, 1))) ?? [];
+  }, [ownershipData]);
 
   const {
     data: balanceData,
@@ -114,19 +115,6 @@ export const MainPage = () => {
     }
   }, [balanceData, isBalanceReadSuccess, isFetching, setCoins]);
 
-  const fetchOwnership = useCallback(async () => {
-    if (!account) return;
-
-    const count = ownershipData?.map((o) => Number(ownershipData)) ?? 0;
-    setOwnershipCount(count);
-  }, [account, ownershipData]);
-
-  useEffect(() => {
-    if (ownershipData) {
-      fetchOwnership();
-    }
-  }, [account, fetchOwnership, ownershipData]);
-
   useEffect(() => {
     if (BITContractTxStatus === "pending") {
       toast("Mining your transaction..");
@@ -146,11 +134,11 @@ export const MainPage = () => {
     } else if (BrainNFTContractTxStatus === "success") {
       toast.success("Successfully minted NFT for you");
 
-      fetchOwnership();
+      refetchOwnershipData();
     } else if (BrainNFTContractTxStatus === "error") {
       toast.error("Failed to mint NFT");
     }
-  }, [fetchOwnership, setSynced, BrainNFTContractTxStatus]);
+  }, [refetchOwnershipData, setSynced, BrainNFTContractTxStatus]);
 
   return (
     <VerticalNavigationTemplate>
@@ -227,7 +215,7 @@ export const MainPage = () => {
                     contentMain={n.description}
                     handleClick={() => claimCard(i + 1)}
                     insufficient={synced < BRONZE_THRESHOLD}
-                    owned={!!ownershipCount[i + 1]}
+                    owned={!!ownershipCount?.[i + 1]}
                     baseAggregatorUrl={baseAggregatorUrl}
                   />
                 </div>
