@@ -62,7 +62,7 @@ export const DndGame: React.FC = () => {
   const navigate = useNavigate();
 
 
-  const server_url = "http://localhost:3000";
+  const server_url = process.env.SERVER_URL || "https://localhost:3000";
 
   useEffect(() => {
     if (gameState.turns === turns) {
