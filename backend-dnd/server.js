@@ -104,7 +104,7 @@ async function uploadToWalrus(imageUrl) {
       // Fetch the image from the URL and convert it to a Blob
 
       const basePublisherUrl = "https://walrus-testnet-publisher.nodes.guru";
-      const numEpochs = 1;
+      const numEpochs = 25;
 
       const response = await axios.get(imageUrl, { responseType: "arraybuffer" });
   

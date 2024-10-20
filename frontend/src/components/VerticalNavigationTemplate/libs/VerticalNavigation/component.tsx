@@ -212,10 +212,6 @@ export const VerticalNavigation: React.FC = () => {
           <p className="text-base leading-4">Reaction time</p>
         </button>
 
-
-
-
-
       </div>
       <div className="flex items-center hidden px-6 py-4 ml-4 font-bold coin-display rounded-md animate-pulse-fast">
         
