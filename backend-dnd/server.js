@@ -1,16 +1,14 @@
 require("dotenv").config(); // Load environment variables
 const express = require("express");
-const cors = require('cors');
+const cors = require("cors");
 const bodyParser = require("body-parser");
-const { startGameSession, sendQuery, generateImageResponse } = require("./gameSession");
 const {
-  LANGUAGES,
-  GENRES,
-  MAX_TURNS,
-  gameInstructions,
-  extractOptionsFromAIResponse,
-} = require("./utils");
-const { v4: uuidv4 } = require('uuid');
+  startGameSession,
+  sendQuery,
+  generateImageResponse,
+} = require("./gameSession");
+const { extractOptionsFromAIResponse } = require("./utils");
+const { v4: uuidv4 } = require("uuid");
 
 const uuid = uuidv4();
 
@@ -27,10 +25,11 @@ let gameSettings = {};
 // Serve static files from the "public" directory (your frontend)
 app.use(express.static("public"));
 
-app.use(cors({
-  origin: '*',
-}));
-
+app.use(
+  cors({
+    origin: "*",
+  })
+);
 
 // Use body-parser middleware to parse JSON requests
 app.use(bodyParser.json());
@@ -47,11 +46,18 @@ app.post("/start", async (req, res) => {
   const { gptVersion, language, genre, turns, wallet_address } = req.body;
 
   // Initialize game settings
-  gameSettings = { gptVersion, language, genre, turns, round: 1, isGameStarted: true };
+  gameSettings = {
+    gptVersion,
+    language,
+    genre,
+    turns,
+    round: 1,
+    isGameStarted: true,
+  };
 
   // Start the game and get the initial response
   const response = await startGameSession(wallet_address, uuid, gameSettings);
-  console.log(response)
+  console.log(response);
   const choices = extractOptionsFromAIResponse(response);
 
   res.json({ message: response, choices });
@@ -83,16 +89,14 @@ app.post("/continue", async (req, res) => {
   res.json({ message: response, choices, imageUrl: imageResponse.data[0].url });
   const walrus_data = await uploadToWalrus(imageResponse.data[0].url);
   updateJsonFile(walrus_data);
-
 });
 
 app.get("/gallery", async (req, res) => {
-  const walrus_json = "saved_files/walrus_blob_id.json"
-  const fileContent = await fs.readFile(walrus_json, 'utf8');
+  const walrus_json = "saved_files/walrus_blob_id.json";
+  const fileContent = await fs.readFile(walrus_json, "utf8");
   jsonData = JSON.parse(fileContent);
   res.json(jsonData);
-
-})
+});
 
 function generateUniqueFilename() {
   const timestamp = new Date().toISOString().replace(/[:.]/g, "-");
@@ -100,86 +104,92 @@ function generateUniqueFilename() {
 }
 
 async function uploadToWalrus(imageUrl) {
-    try {
-      // Fetch the image from the URL and convert it to a Blob
+  try {
+    // Fetch the image from the URL and convert it to a Blob
 
-      const basePublisherUrl = "https://walrus-testnet-publisher.nodes.guru";
-      const numEpochs = 25;
+    const basePublisherUrl = "https://walrus-testnet-publisher.nodes.guru";
+    const numEpochs = 25;
 
-      const response = await axios.get(imageUrl, { responseType: "arraybuffer" });
-  
-      if (!(response.status === 200)) {
-        throw new Error("Failed to fetch the image from URL");
-      }
+    const response = await axios.get(imageUrl, { responseType: "arraybuffer" });
 
-      // Submit a PUT request to store the image blob to Walrus
-      const walrusResponse = await fetch(`${basePublisherUrl}/v1/store?epochs=${numEpochs}`, {
+    if (!(response.status === 200)) {
+      throw new Error("Failed to fetch the image from URL");
+    }
+
+    // Submit a PUT request to store the image blob to Walrus
+    const walrusResponse = await fetch(
+      `${basePublisherUrl}/v1/store?epochs=${numEpochs}`,
+      {
         method: "PUT",
         body: response.data,
-      });
-  
-      if (walrusResponse.status === 200) {
-        // Parse successful responses as JSON, and return the blob ID along with the mime type
-        const info = await walrusResponse.json();
-        console.log("Stored blob info:", info);
-        if ("alreadyCertified" in info) {
-          storage_info = {
-            status: "Already certified",
-            blobId: info.alreadyCertified.blobId,
-            endEpoch: info.alreadyCertified.endEpoch,
-          };
-        } else {
-          storage_info = {
-            status: "Newly created",
-            blobId: info.newlyCreated.blobObject.blobId,
-            endEpoch: info.newlyCreated.blobObject.storage.endEpoch,
-          };
-        }
+      }
+    );
 
-
-        return { blob_id: storage_info.blobId, endEpoch: storage_info.endEpoch };
+    if (walrusResponse.status === 200) {
+      // Parse successful responses as JSON, and return the blob ID along with the mime type
+      const info = await walrusResponse.json();
+      console.log("Stored blob info:", info);
+      if ("alreadyCertified" in info) {
+        storage_info = {
+          status: "Already certified",
+          blobId: info.alreadyCertified.blobId,
+          endEpoch: info.alreadyCertified.endEpoch,
+        };
       } else {
-        console.log(walrusResponse)
-        throw new Error("Something went wrong when storing the blob to Walrus!");
+        storage_info = {
+          status: "Newly created",
+          blobId: info.newlyCreated.blobObject.blobId,
+          endEpoch: info.newlyCreated.blobObject.storage.endEpoch,
+        };
       }
-    } catch (error) {
-      console.error("Error:", error);
-    }
-  }
-  
-  async function updateJsonFile(newData) {
-    try {
-      // Read the existing data from the JSON file (if it exists)
-      let jsonData = {};
-      const walrus_json = "saved_files/walrus_blob_id.json"
 
-      try {
-        const fileContent = await fs.readFile(walrus_json, 'utf8');
-        jsonData = JSON.parse(fileContent); // Parse the JSON content into an object
-      } catch (err) {
-        if (err.code === 'ENOENT') {
-          // If the file does not exist, create the file with an empty object
-          console.log("File not found, creating a new one...");
-          jsonData = {}; // Initialize empty object
-          await fs.writeFile(walrus_json, JSON.stringify(jsonData, null, 2), 'utf8'); // Create an empty JSON file
-        } else {
-          // Re-throw other errors
-          throw err;
-        }
-      }
-  
-      // Update the data with the new entry (you can customize the update logic)
-      // Assuming newData contains blob_id and media_type
-      jsonData[generateUniqueFilename()] = newData;
-  
-      // Write the updated data back to the file
-      await fs.writeFile(walrus_json, JSON.stringify(jsonData, null, 2), 'utf8');
-  
-      console.log('JSON file updated successfully!');
-    } catch (error) {
-      console.error('Error updating JSON file:', error);
+      return { blob_id: storage_info.blobId, endEpoch: storage_info.endEpoch };
+    } else {
+      console.log(walrusResponse);
+      throw new Error("Something went wrong when storing the blob to Walrus!");
     }
+  } catch (error) {
+    console.error("Error:", error);
   }
+}
+
+async function updateJsonFile(newData) {
+  try {
+    // Read the existing data from the JSON file (if it exists)
+    let jsonData = {};
+    const walrus_json = "saved_files/walrus_blob_id.json";
+
+    try {
+      const fileContent = await fs.readFile(walrus_json, "utf8");
+      jsonData = JSON.parse(fileContent); // Parse the JSON content into an object
+    } catch (err) {
+      if (err.code === "ENOENT") {
+        // If the file does not exist, create the file with an empty object
+        console.log("File not found, creating a new one...");
+        jsonData = {}; // Initialize empty object
+        await fs.writeFile(
+          walrus_json,
+          JSON.stringify(jsonData, null, 2),
+          "utf8"
+        ); // Create an empty JSON file
+      } else {
+        // Re-throw other errors
+        throw err;
+      }
+    }
+
+    // Update the data with the new entry (you can customize the update logic)
+    // Assuming newData contains blob_id and media_type
+    jsonData[generateUniqueFilename()] = newData;
+
+    // Write the updated data back to the file
+    await fs.writeFile(walrus_json, JSON.stringify(jsonData, null, 2), "utf8");
+
+    console.log("JSON file updated successfully!");
+  } catch (error) {
+    console.error("Error updating JSON file:", error);
+  }
+}
 
 // Start the Express server
 app.listen(PORT, () => {
