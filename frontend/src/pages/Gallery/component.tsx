@@ -65,7 +65,7 @@ const ImageSection = ({ title, images }) => (
         {images.length === 0 ? (
           <p className="text-white">No images available.</p>
         ) : (
-          images.map((image, index) => (
+          images.slice(0,12).map((image, index) => (
             <div
               key={index}
               className="bg-gray-800 rounded-lg overflow-hidden shadow-lg"
