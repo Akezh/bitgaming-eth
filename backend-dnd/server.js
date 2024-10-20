@@ -28,7 +28,7 @@ let gameSettings = {};
 app.use(express.static("public"));
 
 app.use(cors({
-  origin: 'http://localhost:5173',
+  origin: '*',
 }));
 
 
