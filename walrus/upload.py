@@ -15,7 +15,7 @@ assets = {
 def upload_file_to_walrus(file_path):
     store_json_command = f"""{{ "config" : "{PATH_TO_WALRUS_CONFIG}",
         "command" : {{ "store" :
-        {{ "file" : "{file_path}", "epochs" : 1  }}}}
+        {{ "file" : "{file_path}", "epochs" : 25 }}}}
     }}"""
     result = subprocess.run(
         [PATH_TO_WALRUS, "json"],

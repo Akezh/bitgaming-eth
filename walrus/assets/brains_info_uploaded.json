@@ -7,7 +7,7 @@
             "requiredScore": "Requires 50 on-chain BIT",
             "gen": "gen 1 - 1",
             "supply": "supply: 12323",
-            "endEpoch": 6
+            "endEpoch": 31
         },
         {
             "image": "CWnhx4rCMSd05QmYoCvjBC2n79BK0h3PRXEBoac0Brs",
@@ -16,7 +16,7 @@
             "requiredScore": "Requires 50 on-chain BIT",
             "gen": "gen 1 - 2",
             "supply": "supply: 21321",
-            "endEpoch": 6
+            "endEpoch": 31
         }
     ],
     "silverNFT": [
@@ -27,7 +27,7 @@
             "requiredScore": "Requires 300 on-chain BIT",
             "gen": "gen 2 - 1",
             "supply": "supply: 423",
-            "endEpoch": 6
+            "endEpoch": 31
         },
         {
             "image": "cmZ6AmETfsb8qia_Bqi1wwWSyB0hbtlh45ux8PUuhKY",
@@ -36,7 +36,7 @@
             "requiredScore": "Requires 300 on-chain BIT",
             "gen": "gen 2 - 2",
             "supply": "supply: 321",
-            "endEpoch": 6
+            "endEpoch": 31
         },
         {
             "image": "OpXnrOeS-cuDcQqP1vHP0II44CgGqvlQPsvM8eESKFI",
@@ -45,7 +45,7 @@
             "requiredScore": "Requires 300 on-chain BIT",
             "gen": "gen 2 - 3",
             "supply": "supply: 453",
-            "endEpoch": 6
+            "endEpoch": 31
         },
         {
             "image": "OIoHop6Aca0Kh1Is00tGIIciCkZPHqix1m3sauXEF9s",
@@ -54,7 +54,7 @@
             "requiredScore": "Requires 300 on-chain BIT",
             "gen": "gen 2 - 4",
             "supply": "supply: 233",
-            "endEpoch": 6
+            "endEpoch": 31
         },
         {
             "image": "OZNA9jk_2tB_RHc5TfA4Zeh0E0kTC93ZB9g9jS-YO9A",
@@ -63,7 +63,7 @@
             "requiredScore": "Requires 300 on-chain BIT",
             "gen": "gen 2 - 5",
             "supply": "supply: 195",
-            "endEpoch": 6
+            "endEpoch": 31
         }
     ],
     "goldNFT": [
@@ -74,7 +74,7 @@
             "requiredScore": "Requires 500 on-chain BIT",
             "gen": "gen 5 - 1",
             "supply": "supply: 23",
-            "endEpoch": 6
+            "endEpoch": 31
         },
         {
             "image": "kvBr0TeXRJkZeU0K00DqpJysCa0lGnUe7jwGAYUcbgM",
@@ -83,7 +83,7 @@
             "requiredScore": "Requires 500 on-chain BIT",
             "gen": "gen 5 - 2",
             "supply": "supply: 10",
-            "endEpoch": 6
+            "endEpoch": 31
         }
     ]
 }
