@@ -2,6 +2,9 @@
 
 **Play-To-Earn gaming platform & NFT marketplace**
 
+## ⏯️ Demonstration
+https://bitgaming-gl10btlc5-akezhs-projects.vercel.app/
+
 ---
 
 ## 📑 Table of Contents
