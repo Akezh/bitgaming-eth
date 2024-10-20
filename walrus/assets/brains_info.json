@@ -1,0 +1,80 @@
+{
+  "bronzeNFT": [
+      {
+          "image": "",
+          "name": "Smally brain",
+          "description": "The brains of crypto beginners.",
+          "requiredScore": "Requires 50 on-chain BIT",
+          "gen": "gen 1 - 1",
+          "supply": "supply: 12323"
+      },
+      {
+          "image": "",
+          "name": "Mini brain",
+          "description": "Another type of brains of crypto beginners.",
+          "requiredScore": "Requires 50 on-chain BIT",
+          "gen": "gen 1 - 2",
+          "supply": "supply: 21321"
+      }
+  ],
+  "silverNFT": [
+      {
+          "image": "",
+          "name": "Miner's brain",
+          "description": "The brain of average mining enjoyer.",
+          "requiredScore": "Requires 300 on-chain BIT",
+          "gen": "gen 2 - 1",
+          "supply": "supply: 423"
+      },
+      {
+          "image": "",
+          "name": "Average brain",
+          "description": "The brain of experienced crypto dog.",
+          "requiredScore": "Requires 300 on-chain BIT",
+          "gen": "gen 2 - 2",
+          "supply": "supply: 321"
+      },
+      {
+          "image": "",
+          "name": "Axis brain",
+          "description": "The geek brains of the geek personality.",
+          "requiredScore": "Requires 300 on-chain BIT",
+          "gen": "gen 2 - 3",
+          "supply": "supply: 453"
+      },
+      {
+          "image": "",
+          "name": "Middly brain",
+          "description": "The brain of average mining enjoyer.",
+          "requiredScore": "Requires 300 on-chain BIT",
+          "gen": "gen 2 - 4",
+          "supply": "supply: 233"
+      },
+      {
+          "image": "",
+          "name": "Minted brain",
+          "description": "The brain that undergo minting.",
+          "requiredScore": "Requires 300 on-chain BIT",
+          "gen": "gen 2 - 5",
+          "supply": "supply: 195"
+      }
+  ],
+  "goldNFT": [
+      {
+          "image": "",
+          "name": "Geek brain",
+          "description": "The brain of the real geek.",
+          "requiredScore": "Requires 500 on-chain BIT",
+          "gen": "gen 5 - 1",
+          "supply": "supply: 23"
+      },
+      {
+          "image": "",
+          "name": "Jet brain",
+          "description": "The brain of the real jet man.",
+          "requiredScore": "Requires 500 on-chain BIT",
+          "gen": "gen 5 - 2",
+          "supply": "supply: 10"
+      }
+  ]
+}

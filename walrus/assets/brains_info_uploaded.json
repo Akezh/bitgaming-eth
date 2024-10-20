@@ -1,0 +1,89 @@
+{
+    "bronzeNFT": [
+        {
+            "image": "uynLtXzvI7Yoz70mEuj-4jr6JiKx4WeZfAzCiEYD9nw",
+            "name": "Smally brain",
+            "description": "The brains of crypto beginners.",
+            "requiredScore": "Requires 50 on-chain BIT",
+            "gen": "gen 1 - 1",
+            "supply": "supply: 12323",
+            "endEpoch": 6
+        },
+        {
+            "image": "CWnhx4rCMSd05QmYoCvjBC2n79BK0h3PRXEBoac0Brs",
+            "name": "Mini brain",
+            "description": "Another type of brains of crypto beginners.",
+            "requiredScore": "Requires 50 on-chain BIT",
+            "gen": "gen 1 - 2",
+            "supply": "supply: 21321",
+            "endEpoch": 6
+        }
+    ],
+    "silverNFT": [
+        {
+            "image": "toCBl_X480P071aMza6i7S3t412UJZHhrgeJT83s9qI",
+            "name": "Miner's brain",
+            "description": "The brain of average mining enjoyer.",
+            "requiredScore": "Requires 300 on-chain BIT",
+            "gen": "gen 2 - 1",
+            "supply": "supply: 423",
+            "endEpoch": 6
+        },
+        {
+            "image": "cmZ6AmETfsb8qia_Bqi1wwWSyB0hbtlh45ux8PUuhKY",
+            "name": "Average brain",
+            "description": "The brain of experienced crypto dog.",
+            "requiredScore": "Requires 300 on-chain BIT",
+            "gen": "gen 2 - 2",
+            "supply": "supply: 321",
+            "endEpoch": 6
+        },
+        {
+            "image": "OpXnrOeS-cuDcQqP1vHP0II44CgGqvlQPsvM8eESKFI",
+            "name": "Axis brain",
+            "description": "The geek brains of the geek personality.",
+            "requiredScore": "Requires 300 on-chain BIT",
+            "gen": "gen 2 - 3",
+            "supply": "supply: 453",
+            "endEpoch": 6
+        },
+        {
+            "image": "OIoHop6Aca0Kh1Is00tGIIciCkZPHqix1m3sauXEF9s",
+            "name": "Middly brain",
+            "description": "The brain of average mining enjoyer.",
+            "requiredScore": "Requires 300 on-chain BIT",
+            "gen": "gen 2 - 4",
+            "supply": "supply: 233",
+            "endEpoch": 6
+        },
+        {
+            "image": "OZNA9jk_2tB_RHc5TfA4Zeh0E0kTC93ZB9g9jS-YO9A",
+            "name": "Minted brain",
+            "description": "The brain that undergo minting.",
+            "requiredScore": "Requires 300 on-chain BIT",
+            "gen": "gen 2 - 5",
+            "supply": "supply: 195",
+            "endEpoch": 6
+        }
+    ],
+    "goldNFT": [
+        {
+            "image": "AB5FyW7L6-Wvn4uEWYglHSCo2mfGTcBX0q-g-LyhUdg",
+            "name": "Geek brain",
+            "description": "The brain of the real geek.",
+            "requiredScore": "Requires 500 on-chain BIT",
+            "gen": "gen 5 - 1",
+            "supply": "supply: 23",
+            "endEpoch": 6
+        },
+        {
+            "image": "kvBr0TeXRJkZeU0K00DqpJysCa0lGnUe7jwGAYUcbgM",
+            "name": "Jet brain",
+            "description": "The brain of the real jet man.",
+            "requiredScore": "Requires 500 on-chain BIT",
+            "gen": "gen 5 - 2",
+            "supply": "supply: 10",
+            "endEpoch": 6
+        }
+    ]
+}
