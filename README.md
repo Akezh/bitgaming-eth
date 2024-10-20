@@ -1,7 +1,7 @@
 
 # Bitgame-ETH
 
-placeholder for intro
+Bitgame-ETH is a blockchain-powered gaming platform combining play-to-earn mechanics, NFTs, and an AI-driven Dungeons & Dragons (DnD) game. Using Dynamic and Flow networks, it ensures smooth asset transfers and smart contract interactions. Players earn NFTs and tokens by completing quests and battles, which can be used in-game or traded. The AI-powered DnD game offers immersive storytelling with real-time decision-making, delivering a next-gen gaming experience.
 
 ---
 
