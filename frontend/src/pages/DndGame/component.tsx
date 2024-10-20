@@ -32,7 +32,7 @@ interface Message {
   }
 
 const icon = <ApiIcon />;
-const REWARD = 5;
+const REWARD = 100;
 
 export const DndGame: React.FC = () => {
 
@@ -123,12 +123,20 @@ export const DndGame: React.FC = () => {
   };
 
   // Function to send user input
-  const sendUserInput = async (userInput: string) => {
-    console.log("userinput", userInput)
-    if (!userInput) return;
+  const sendUserInput = async () => {
+    console.log("userinput", choice)
+    if (!choice) return;
 
     updateChat("client", `**You**: 
-        ${userInput}`);
+        ${choice}`);
+
+    let userInput;
+    console.log(typeof choice);
+    if (typeof choice === 'object') {
+        userInput = choice[0];
+    } else {
+      userInput = choice;
+    }
     
     try {
         setGameState((gameState) => ({
@@ -286,8 +294,10 @@ export const DndGame: React.FC = () => {
                     minRows={2}
                     fullWidth
                     onChange={e => setChoice(e.target.value)}
+                    disabled={gameState.mode===MODES.WATING}
+
                     onKeyDown={(e) => {
-                        if (e.key === "Enter") sendUserInput(choice[0]);
+                        if (e.key === "Enter") sendUserInput();
                     }}
                     InputProps={{
                         sx: {
@@ -303,8 +313,7 @@ export const DndGame: React.FC = () => {
                 className="mt-4"
                     disabled={gameState.mode===MODES.WATING}
                     variant="contained"
-                    onClick={() => sendUserInput(choice[0])}
-
+                    onClick={() => sendUserInput()}
                     sx={{
                         '&.Mui-disabled': {
                         backgroundColor: '#6c757d',  // Color when disabled

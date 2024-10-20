@@ -132,9 +132,48 @@ export const VerticalNavigation: React.FC = () => {
             <p className="text-base leading-4">Leaderboard</p>
           </button>
         </Link>
+
+        <Link to="/gallery" className="w-full">
+
+        <button
+          style={{
+            backgroundColor:
+              location.pathname === "/gallery" ? "#202a30" : "transparent",
+          }}
+          className="flex items-center justify-start w-full py-3 pl-4 text-white rounded focus:outline-none hover:text-white hover:bg-gray-700"
+          onClick={() => navigate("/gallery")}
+        >
+          <div className="flex items-center justify-between w-full">
+            <div className="flex items-center justify-start">
+              <CollectionsIcon className="w-6" />
+              <p className="ml-6 text-base leading-4">Gallery</p>
+            </div>
+          </div>
+        </button>
+
+        </Link>
+
+        
       </div>
       <p className="pb-0 pl-4 font-bold text-white">Games</p>
       <div className="flex flex-col items-start justify-start w-full px-4 pb-5 mt-4 text-white space-y-3">
+        
+      <button
+          style={{
+            backgroundColor:
+              location.pathname === "/dndgame" ? "#202a30" : "transparent",
+          }}
+          className="flex items-center justify-start w-full py-3 pl-4 text-white rounded focus:outline-none hover:text-white hover:bg-gray-700"
+          onClick={() => navigate("/dndgame")}
+        >
+          <div className="flex items-center justify-between w-full">
+            <div className="flex items-center justify-start">
+              <ApiIcon className="w-6" />
+              <p className="ml-6 text-base leading-4">DnD Game</p>
+            </div>
+          </div>
+        </button>
+        
         <button
           style={{
             backgroundColor:
@@ -173,37 +212,9 @@ export const VerticalNavigation: React.FC = () => {
           <p className="text-base leading-4">Reaction time</p>
         </button>
 
-        <button
-          style={{
-            backgroundColor:
-              location.pathname === "/dndgame" ? "#202a30" : "transparent",
-          }}
-          className="flex items-center justify-start w-full py-3 pl-4 text-white rounded focus:outline-none hover:text-white hover:bg-gray-700"
-          onClick={() => navigate("/dndgame")}
-        >
-          <div className="flex items-center justify-between w-full">
-            <div className="flex items-center justify-start">
-              <ApiIcon className="w-6" />
-              <p className="ml-6 text-base leading-4">DnD Game</p>
-            </div>
-          </div>
-        </button>
 
-        <button
-          style={{
-            backgroundColor:
-              location.pathname === "/gallery" ? "#202a30" : "transparent",
-          }}
-          className="flex items-center justify-start w-full py-3 pl-4 text-white rounded focus:outline-none hover:text-white hover:bg-gray-700"
-          onClick={() => navigate("/gallery")}
-        >
-          <div className="flex items-center justify-between w-full">
-            <div className="flex items-center justify-start">
-              <CollectionsIcon className="w-6" />
-              <p className="ml-6 text-base leading-4">Gallery</p>
-            </div>
-          </div>
-        </button>
+
+
 
       </div>
       <div className="flex items-center hidden px-6 py-4 ml-4 font-bold coin-display rounded-md animate-pulse-fast">
