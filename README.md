@@ -112,9 +112,9 @@ Refer to the provided **`.env.example`** file for additional details.
 
 ## 👥 Contributors
 
-- **[YongyuLiu03](https://github.com/YongyuLiu03)** – GitHub Profile
-- **[Akezhan Rakishev](https://github.com/Akezh)** – GitHub Profile
-- **[haileyism](https://github.com/haileyism)** – GitHub Profile
+- **[YongyuLiu03](https://github.com/YongyuLiu03)** -
+- **[Akezhan Rakishev](https://github.com/Akezh)** – 
+- **[haileyism](https://github.com/haileyism)** – 
 
 ---
 
